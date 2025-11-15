@@ -1,0 +1,33 @@
+{
+  "name": "qa-guru-diploma_2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "t:api": "playwright test --grep @api",
+    "t:ui": "playwright test --grep @ui",
+    "t:positive": "playwright test --grep @positive",
+    "t:negative": "playwrignpht test --grep @negative",
+    "t:get": "playwright test --grep @get",
+    "t:post": "playwright test --grep @post",
+    "t:delete": "playwright test --grep @delete",
+    "t:patch": "playwright test --grep @patch",
+    "t:options": "playwright test --grep @options"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benkyousuru0/qa-guru-diploma_2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benkyousuru0/qa-guru-diploma_2/issues"
+  },
+  "homepage": "https://github.com/benkyousuru0/qa-guru-diploma_2#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "allure-playwright": "^3.4.2"
+  }
+}
