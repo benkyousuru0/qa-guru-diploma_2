@@ -27,7 +27,14 @@
   "homepage": "https://github.com/benkyousuru0/qa-guru-diploma_2#readme",
   "description": "",
   "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
     "@playwright/test": "^1.56.1",
-    "allure-playwright": "^3.4.2"
+    "allure-playwright": "^3.4.2",
+    "eslint": "^9.39.1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "faker": "^6.6.6",
+    "xml2js": "^0.6.2"
   }
 }

@@ -1,112 +1,83 @@
-import ArticlesPage from '../pages/ArticlesPage';
-import ArticleFormPage from '../pages/ArticleFormPage';
-import ArticleViewPage from '../pages/ArticleViewPage';
-import LoginPage from '../pages/LoginPage';
-import { test, expect } from '@playwright/test';
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
-test.describe('Работа со статьями', () => {
-  let articlesPage, articleFormPage, articleViewPage;
-  let loginPage;
-  let title, description, body, tags;
-  let updatedTitle, updatedBody;
-  let page;
+import { expect } from "@playwright/test";
+import { test } from "../../helpers/fixtures/index.js";
 
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
+test.describe("Работа со статьями", () => {
 
-    title = `Статья ${Math.floor(Math.random() * 10000)}`;
-    description = 'Описание статьи';
-    body = 'Текст статьи';
-    tags = 'test,automation';
-    updatedTitle = `${title} (обновлено)`;
-    updatedBody = 'Обновленный текст статьи';
+  test("Создание новой статьи @ui @positive", async ({ registeredApp, articleData }) => {
+    const app = registeredApp;
 
-    articlesPage = new ArticlesPage(page);
-    articleFormPage = new ArticleFormPage(page);
-    articleViewPage = new ArticleViewPage(page);
-
-    loginPage = new LoginPage(page);
-    await loginPage.goto();
-    await loginPage.login(process.env.LOGIN_EMAIL, process.env.LOGIN_PASSWORD);
+    await app.articles.goto();
+    await app.articles.clickCreateArticle();
+    await app.articleForm.createArticle(articleData);
+    await expect(app.articleView.title).toHaveText(articleData.title);
+    await expect(app.articleView.body).toContainText(articleData.body);
   });
 
-  test('Создание новой статьи @ui @positive', async () => {
-    await articlesPage.goto();
-    await articlesPage.clickCreateArticle();
+  test("Проверка появления статьи в списке и просмотр @ui @positive", async ({ registeredApp, createdArticle }) => {
+    const app = registeredApp;
 
-    await expect(page).toHaveURL(articleFormPage.editorPageURL);
+    await app.articles.goto();
+    await app.articles.clickGlobalFeedTab();
 
-    await articleFormPage.fillArticle({ title, description, body, tags });
+    await expect(app.articles.articleLinkByTitle(createdArticle.title).first()).toBeVisible();
 
-    await expect(articleViewPage.title).toBeVisible();
+    await app.articles.openArticleByTitle(createdArticle.title);
+
+    await expect(app.articleView.title).toHaveText(createdArticle.title);
+    await expect(app.articleView.body).toContainText(createdArticle.body);
   });
 
-  test('Проверка появления статьи в списке и просмотр @ui @positive', async () => {
-    await articlesPage.goto();
-    await articlesPage.clickGlobalFeedTab();
+  test("Добавление и удаление статьи из избранного @ui @positive", async ({ registeredApp, createdArticle }) => {
+    const app = registeredApp;
 
-    await expect(articlesPage.articleLinkByTitle(title).first()).toBeVisible();
+    await app.articles.goto();
+    await app.articles.clickGlobalFeedTab();
 
-    await articlesPage.openArticleByTitle(title);
+    await app.articles.toggleFavorite(createdArticle.title);
+    expect(await app.articles.isArticleFavorited(createdArticle.title)).toBe(true);
 
-    await expect(articleViewPage.title).toHaveText(title);
-    await expect(articleViewPage.body).toContainText(body);
+    await app.articles.toggleFavorite(createdArticle.title);
+    expect(await app.articles.isArticleFavorited(createdArticle.title)).toBe(false);
   });
 
-  test('Добавление статьи в избранное со списка статей @ui @positive', async () => {
-    await articlesPage.goto();
-    await articlesPage.clickGlobalFeedTab();
+  test("Редактирование статьи @ui @positive", async ({ registeredApp, createdArticle, updatedArticleData }) => {
+    const app = registeredApp;
 
-    await articlesPage.toggleFavorite(title);
+    await app.articles.goto();
+    await app.articles.clickGlobalFeedTab();
 
-    expect(await articlesPage.isArticleFavorited(title)).toBe(true);
+    await app.articles.openArticleByTitle(createdArticle.title);
+    await app.articleView.clickEdit();
+
+    await app.articleForm.createArticle(updatedArticleData);
+
+    await expect(app.articleView.title).toHaveText(updatedArticleData.title);
+    await expect(app.articleView.body).toContainText(updatedArticleData.body);
   });
 
-  test('Удаление статьи из избранного со списка статей @ui @positive', async () => {
-    await articlesPage.goto();
-    await articlesPage.clickGlobalFeedTab();
+  test("Удаление статьи @ui @positive", async ({ registeredApp, createdArticle, updatedArticleData }) => {
+    const app = registeredApp;
 
-    expect(await articlesPage.isArticleFavorited(title)).toBe(true);
+    const titleToDelete = updatedArticleData.title || createdArticle.title;
 
-    await articlesPage.toggleFavorite(title);
+    await app.articles.goto();
+    await app.articles.openArticleByTitle(titleToDelete);
 
-    expect(await articlesPage.isArticleFavorited(title)).toBe(false);
+    await app.articleView.clickDelete();
+
+    await expect(app.page).toHaveURL(/#\/$/);
+
+    await app.articles.assertTitleNotExist(titleToDelete);
   });
 
-  test('Редактирование заголовка и содержимого статьи @ui @positive', async () => {
-    await articlesPage.goto();
-    await articlesPage.clickGlobalFeedTab();
+  test.afterEach(async ({ registeredApp, createdArticle, updatedArticleData }) => {
+    const app = registeredApp;
+    const title = updatedArticleData.title || createdArticle.title;
 
-    await articlesPage.openArticleByTitle(title);
-    await articleViewPage.clickEdit();
-
-    await articleFormPage.fillArticle({ title: updatedTitle, description, body: updatedBody, tags });
-
-    await expect(articleViewPage.title).toHaveText(updatedTitle);
-    await expect(articleViewPage.body).toContainText(updatedBody);
-  });
-
-  test('Удаление статьи', async () => {
-    const currentUrl = page.url();  
-    if (!currentUrl.includes('/article/')) {
-      await articlesPage.goto();
-      await articlesPage.openArticleByTitle(updatedTitle || title);
-    }
-
-    await articleViewPage.clickDelete();
-    await page.waitForURL(/#\/$/);
-    await expect(page).toHaveURL(/#\/$/);
-
-    await articlesPage.assertTitleNotExist(updatedTitle, title);
-  });
-
-  test.afterAll(async () => {
-    const count = await articlesPage.countArticlesByTitle(updatedTitle || title);
-    if (count !== 0) {
-      throw new Error(`Статья с названием "${updatedTitle || title}" всё ещё присутствует`);
-    }
-    await page.close();
+    const count = await app.articles.countArticlesByTitle(title);
+    if (count !== 0) {throw new Error(`Статья "${title}" всё ещё существует`);}
   });
 });

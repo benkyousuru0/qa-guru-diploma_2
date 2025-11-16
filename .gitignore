@@ -7,6 +7,7 @@ node_modules/
 # .env.*.local
 
 # Playwright test reports
+allure-results/
 test-results/
 playwright-report/
 

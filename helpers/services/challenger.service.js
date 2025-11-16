@@ -18,19 +18,20 @@ export class ChallengerService {
   setToken(token) {
     this.token = token;
   }
-
+  
   async createChallenger() {
     return test.step("POST /challenger", async () => {
-      const response = await this.request.post(`${this.baseURL}/challenger`);
-      this.token = response.headers()["x-challenger"]; 
-      console.log("Получен токен:", this.token);
+      const response = await this.request.post("/challenger", {
+        headers: this._headers(),
+      });
+      this.token = response.headers()["x-challenger"];
       return response;
     });
   }
 
   async getChallenges(options = {}) {
     return test.step("GET /challenges", async () => {
-      const response = await this.request.get(`${this.baseURL}/challenges`, {
+      const response = await this.request.get("/challenges", {
         headers: this._headers(options.headers),
       });
       const body = await response.json();
@@ -41,4 +42,5 @@ export class ChallengerService {
       };
     });
   }
+
 }

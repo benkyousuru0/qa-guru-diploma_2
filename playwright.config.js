@@ -1,8 +1,8 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: './tests',
-  outputDir: './test-results',
+  testDir: "./tests",
+  outputDir: "./test-results",
 
   /* Запуск параллельно */
   fullyParallel: true,
@@ -12,16 +12,16 @@ export default defineConfig({
 
   /* Репортеры */
   reporter: [
-    ['line'],
-    ['html', { open: 'never' }],
-    ['allure-playwright', { outputFolder: 'allure-results' }],
+    ["line"],
+    ["html", { open: "never" }],
+    ["allure-playwright", { outputFolder: "allure-results" }],
   ],
 
   /* Общие настройки */
   use: {
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    trace: "on-first-retry",
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
     actionTimeout: 10_000,
     navigationTimeout: 15_000,
     expectTimeout: 5_000,
@@ -30,19 +30,19 @@ export default defineConfig({
   /* Настройка проектов */
   projects: [
     {
-      name: 'API Tests',
-      testMatch: 'api/**/*.spec.js',
+      name: "API Tests",
+      testMatch: "tests/api/*.spec.js",
       use: {
-        ...devices['Desktop Chrome'],
-        baseURL: 'https://apichallenges.herokuapp.com',
+        ...devices["Desktop Chrome"],
+        baseURL: "https://apichallenges.herokuapp.com",
       },
     },
     {
-      name: 'UI Tests',
-      testMatch: 'ui/**/*.spec.js',
+      name: "UI Tests",
+      testMatch: "tests/e2e/*.spec.js",
       use: {
-        ...devices['Desktop Chrome'],
-        baseURL: 'https://realworld.qa.guru/',
+        ...devices["Desktop Chrome"],
+        baseURL: "https://realworld.qa.guru",
       },
     },
   ],

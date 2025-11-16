@@ -1,12 +1,11 @@
-import { expect } from '@playwright/test';
+import { expect } from "@playwright/test";
 
-class ArticlesPage {
+export class ArticlesPage {
   constructor(page) {
     this.page = page;
-    this.articlesList = page.locator('.article-preview');
-    this.baseUrl = "https://realworld.qa.guru/#/";
-    this.createArticleButton = page.locator('a.nav-link:has-text("New Article")'); 
-    this.globalFeedTab = page.locator('.feed-toggle button.nav-link', { hasText: 'Global Feed' });
+    this.articlesList = page.locator(".article-preview");
+    this.createArticleButton = page.locator("a.nav-link:has-text(\"New Article\")"); 
+    this.globalFeedTab = page.locator(".feed-toggle button.nav-link", { hasText: "Global Feed" });
 
     this.articleLinkByTitle = (title) => page.locator(`.article-preview >> text=${title}`);
     this.articleLinkByText = (text) => page.locator(`.article-preview:has-text("${text}")`);
@@ -14,7 +13,7 @@ class ArticlesPage {
   }
 
   async goto() {
-    await this.page.goto(this.baseUrl);
+    await this.page.goto("/");
   }
 
   async clickCreateArticle() {
@@ -45,13 +44,13 @@ class ArticlesPage {
 
   async isArticleFavorited(title) {
     const button = this.favoriteButtonByTitle(title).first();
-    const className = await button.getAttribute('class');
-    return className?.includes('active');
+    const className = await button.getAttribute("class");
+    return className?.includes("active");
   }
 
   async toggleFavorite(title) {
     const favoriteButton = this.favoriteButtonByTitle(title).first();
-    const wasActive = (await favoriteButton.getAttribute('class'))?.includes('active');
+    const wasActive = (await favoriteButton.getAttribute("class"))?.includes("active");
     await favoriteButton.click();
 
     if (wasActive) {
@@ -61,5 +60,3 @@ class ArticlesPage {
     }
   }
 }
-
-module.exports = ArticlesPage;

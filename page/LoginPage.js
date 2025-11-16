@@ -1,12 +1,10 @@
-import { test, expect } from '@playwright/test';
-
-class LoginPage {
+export class LoginPage {
   constructor(page) {
     this.page = page;
-    this.url = 'https://realworld.qa.guru/#/login';
-    this.emailInput = page.locator('input[name="email"]');
-    this.passwordInput = page.locator('input[name="password"]');
-    this.signInButton = page.locator('button.btn.btn-lg.pull-xs-right.btn-primary');
+    this.url = "https://realworld.qa.guru/#/login";
+    this.emailInput = page.locator("input[name=\"email\"]");
+    this.passwordInput = page.locator("input[name=\"password\"]");
+    this.signInButton = page.locator("button.btn.btn-lg.pull-xs-right.btn-primary");
   }
 
   async goto() {
@@ -18,6 +16,8 @@ class LoginPage {
     await this.passwordInput.fill(password);
     await this.signInButton.click();
   }
-}
 
-module.exports = LoginPage;
+  getUserName(name) {
+    return this.page.getByText(name);
+  }
+}
