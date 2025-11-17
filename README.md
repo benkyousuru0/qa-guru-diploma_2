@@ -1,54 +1,81 @@
-<h1 align="center">🎓 Diploma Project — Playwright + Allure + CI/CD</h1>
+# 🎓 Diploma Project — Playwright + Allure + CI/CD
 
-<p align="center">
-  <b>UI и API автотесты на Playwright с красивыми отчётами, GitHub Actions, Allure TestOps и уведомлениями в Telegram.</b>
-</p>
+Цель проекта — продемонстрировать навыки автоматизации, полученные в рамках курса QA.GURU.
+В проект включены UI и API тесты, настроены CI/CD, Allure-отчёты, деплой на GitHub Pages, а также интеграция с TestOps.
 
-<p align="center">
-  <img src="https://img.shields.io/github/actions/workflow/status/benkyousuru0/qa-guru-diploma_2/playwright.yml?label=CI%2FCD&logo=github&style=flat-square">
-  <img src="https://img.shields.io/badge/Playwright-1.56-blue?logo=playwright&style=flat-square">
-  <img src="https://img.shields.io/badge/Allure-Report-orange?logo=allure&style=flat-square">
-  <img src="https://img.shields.io/badge/TestOps-Cloud-purple?style=flat-square">
-</p>
+## 📚 Содержание
 
----
+- [Описание](#-описание)
+- [Allure-отчёт](#-allure-отчёт)
+- [TestOps](#-testops)
+- [Telegram](#-уведомления-в-telegram)
+- [Запуск](#-запуск-локально)
 
-## 🌐 Публичный Allure Report
 
-👉 **https://benkyousuru0.github.io/qa-guru-diploma_2/**
+📝 Описание
 
-## ☁️ Allure TestOps
+Репозиторий содержит:
+- **API-тесты** для `https://apichallenges.herokuapp.com`
+- **UI-тесты** для `https://realworld.qa.guru`
+- Написаны на **JavaScript** + **Playwright**
+- Настроен **GitHub Actions**:
+  - Запуск тестов
+  - Allure-отчёты
+  - Публикация на GitHub Pages
+  - Интеграция с Allure TestOps
+  - Уведомления в Telegram
 
-👉 **https://allure.autotests.cloud/project/5000**
+Запуск — при пуше в `main` или `master`.
 
-## 🧪 Jenkins Job
+## 📊 Allure-отчёт
 
-👉 **https://jenkins.autotests.cloud/job/01-benkyousuru-js/**
+[👉 Посмотреть Allure report](https://benkyousuru0.github.io/qa-guru-diploma_2/)
 
----
+![Allure Report](images_report/allure-report.png)
 
-# 🚀 Стек технологий
+Отчёт автоматически генерируется из файлов allure-results и публикуется в gh-pages.
 
-| Инструмент | Использование |
-|-----------|---------------|
-| **Playwright** | UI + API автотесты |
-| **JavaScript / Node.js** | язык проекта |
-| **Allure Report** | HTML-отчёты |
-| **Allure Playwright** | интеграция с отчётами |
-| **Allure TestOps** | аналитика, история прогонов |
-| **GitHub Actions** | CI/CD |
-| **Jenkins** | дополнительный запуск |
-| **Telegram Bot API** | уведомления |
+## 🔗 TestOps
 
----
+[👉 Перейти в Allure TestOps](https://allure.autotests.cloud/launch/49655)
 
-# 📦 Установленные зависимости
+![TestOps Dashboard](images_report/testops-dashboard.png)
 
-### DevDeps
-```json
-{
-  "@faker-js/faker": "^10.1.0",
-  "@playwright/test": "^1.56.1",
-  "allure-playwright": "^3.4.2",
-  "eslint": "^9.39.1"
-}
+## 📢 Уведомления в Telegram
+
+После каждого запуска приходит уведомление:
+
+![Telegram Notification](images_report/telegram-notification.png)
+
+> Содержит:
+> - Статус: ✅ Тесты пройдены / ❌ Тесты упали
+> - Количество тестов
+> - Ссылки на отчёты и артефакты
+
+## 🏁 Запуск локально
+
+Для локального запуска требуется:
+
+1. Клонировать репозиторий: `git clone https://github.com/benkyousuru0/qa-guru-diploma_2.git`
+2. Установить зависимости: `npm install`
+3. Запустить все тесты: `npx playwright test`
+4. При желании можно запустить тесты по тегам:
+```
+npm run t:ui
+npm run t:api
+npm run t:positive
+npm run t:negative
+```
+
+## 📦 Используемые зависимости
+
+devDependencies:
+
+- @faker-js/faker
+- @playwright/test
+- allure-playwright
+- eslint
+
+dependencies:
+- dotenv
+- faker
