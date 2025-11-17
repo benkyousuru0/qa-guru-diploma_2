@@ -1,5 +1,4 @@
 import { test } from "@playwright/test";
-import { parseStringPromise } from "xml2js";
 
 export class TodosService {
   constructor(request, baseURL, token = null) {
@@ -10,7 +9,7 @@ export class TodosService {
 
   _headers(extraHeaders = {}) {
     return {
-      "Content-Type": extraHeaders["Content-Type"] || "application/json",
+      "Content-Type": "application/json",
       ...(this.token ? { "x-challenger": this.token } : {}),
       ...extraHeaders,
     };
@@ -26,16 +25,12 @@ export class TodosService {
       data: todoData,
     });
 
-    const contentType = response.headers()["content-type"];
-    const text = await response.text();
+    let body = null;
 
-    let body;
-    if (contentType?.includes("application/json")) {
-      body = text ? JSON.parse(text) : null;
-    } else if (contentType?.includes("application/xml")) {
-      body = text ? await parseStringPromise(text, { explicitArray: false }) : null;
-    } else {
-      body = text;
+    try {
+      body = await response.json();
+    } catch {
+      body = await response.text();
     }
 
     return {
@@ -52,14 +47,10 @@ export class TodosService {
         params: options.params,
       });
 
-      const contentType = response.headers()["content-type"];
-      let body;
-      if (contentType.includes("application/json")) {
+      let body = null;
+      try {
         body = await response.json();
-      } else if (contentType.includes("application/xml")) {
-        const text = await response.text();
-        body = await parseStringPromise(text);
-      } else {
+      } catch {
         body = await response.text();
       }
 
@@ -76,10 +67,14 @@ export class TodosService {
       const response = await this.request.get(`${this.baseURL}/todos/${id}`, {
         headers: this._headers(),
       });
+
       let body = null;
       try {
         body = await response.json();
-      } catch {}
+      } catch {
+        body = await response.text();
+      }
+
       return {
         status: response.status(),
         data: body,
@@ -92,10 +87,14 @@ export class TodosService {
       const response = await this.request.get(`${this.baseURL}/todo/`, {
         headers: this._headers(),
       });
+
       let body = null;
       try {
         body = await response.json();
-      } catch {}
+      } catch {
+        body = await response.text();
+      }
+
       return {
         status: response.status(),
         data: body,
