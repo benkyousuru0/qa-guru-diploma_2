@@ -1,0 +1,187 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - generic:
+        - link "conduit" [ref=e5] [cursor=pointer]:
+          - /url: "#/"
+        - list [ref=e6]:
+          - listitem [ref=e7]:
+            - link " Source code" [ref=e8] [cursor=pointer]:
+              - /url: https://github.com/TonyMckes/conduit-realworld-example-app
+              - generic [ref=e9]: 
+              - text: Source code
+        - list [ref=e10]:
+          - listitem [ref=e11]:
+            - link " Home" [ref=e12] [cursor=pointer]:
+              - /url: "#/"
+              - generic [ref=e13]: 
+              - text: Home
+          - listitem [ref=e14]:
+            - link " New Article" [ref=e15] [cursor=pointer]:
+              - /url: "#/editor"
+              - generic [ref=e16]: 
+              - text: New Article
+          - listitem [ref=e17]:
+            - generic [ref=e18] [cursor=pointer]:
+              - img "awdawd" [ref=e19]
+              - text: awdawd
+            - text:   
+  - main [ref=e20]:
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - list [ref=e26]:
+          - listitem [ref=e27]:
+            - button "Your Feed" [ref=e28] [cursor=pointer]
+          - listitem [ref=e29]:
+            - button "Global Feed" [ref=e30]
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - link "awdawd" [ref=e33] [cursor=pointer]:
+              - /url: "#/profile/awdawd"
+              - img "awdawd" [ref=e34]
+            - generic [ref=e35]:
+              - link "awdawd" [ref=e36] [cursor=pointer]:
+                - /url: "#/profile/awdawd"
+              - generic [ref=e37]: November 17, 2025
+            - button " ( 1 )" [ref=e38] [cursor=pointer]:
+              - generic [ref=e39]: 
+              - generic [ref=e40]: ( 1 )
+          - link "Confugo dedico ut. Totam vindico cogo adsuesco decet. Read more... Bis." [ref=e41] [cursor=pointer]:
+            - /url: "#/article/confugo-dedico-ut-"
+            - heading "Confugo dedico ut." [level=1] [ref=e42]
+            - paragraph [ref=e43]: Totam vindico cogo adsuesco decet.
+            - text: Read more...
+            - list [ref=e44]:
+              - listitem [ref=e45]: Bis.
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - link "awdawd" [ref=e48] [cursor=pointer]:
+              - /url: "#/profile/awdawd"
+              - img "awdawd" [ref=e49]
+            - generic [ref=e50]:
+              - link "awdawd" [ref=e51] [cursor=pointer]:
+                - /url: "#/profile/awdawd"
+              - generic [ref=e52]: November 17, 2025
+            - button " ( 0 )" [ref=e53] [cursor=pointer]:
+              - generic [ref=e54]: 
+              - generic [ref=e55]: ( 0 )
+          - link "Enim urbanus venustas. Tredecim a sum harum vester. Read more... Dolores." [ref=e56] [cursor=pointer]:
+            - /url: "#/article/enim-urbanus-venustas-"
+            - heading "Enim urbanus venustas." [level=1] [ref=e57]
+            - paragraph [ref=e58]: Tredecim a sum harum vester.
+            - text: Read more...
+            - list [ref=e59]:
+              - listitem [ref=e60]: Dolores.
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - link "awdawd" [ref=e63] [cursor=pointer]:
+              - /url: "#/profile/awdawd"
+              - img "awdawd" [ref=e64]
+            - generic [ref=e65]:
+              - link "awdawd" [ref=e66] [cursor=pointer]:
+                - /url: "#/profile/awdawd"
+              - generic [ref=e67]: November 17, 2025
+            - button " ( 0 )" [ref=e68] [cursor=pointer]:
+              - generic [ref=e69]: 
+              - generic [ref=e70]: ( 0 )
+          - link "Comparo viriliter qui. Solus tondeo comminor sed illum. Read more... Adsidue." [ref=e71] [cursor=pointer]:
+            - /url: "#/article/comparo-viriliter-qui-"
+            - heading "Comparo viriliter qui." [level=1] [ref=e72]
+            - paragraph [ref=e73]: Solus tondeo comminor sed illum.
+            - text: Read more...
+            - list [ref=e74]:
+              - listitem [ref=e75]: Adsidue.
+        - navigation "Pagination" [ref=e76]:
+          - listitem [ref=e77]:
+            - button "Previous page" [disabled]:
+              - generic: 
+          - listitem [ref=e78]:
+            - button "Page 1 is your current page" [ref=e79]: "1"
+          - listitem [ref=e80]:
+            - button "Page 2" [ref=e81] [cursor=pointer]: "2"
+          - listitem [ref=e82]:
+            - button "Page 3" [ref=e83] [cursor=pointer]: "3"
+          - listitem [ref=e84]:
+            - button "..." [ref=e85] [cursor=pointer]
+          - listitem [ref=e86]:
+            - button "Page 8061" [ref=e87] [cursor=pointer]: "8061"
+          - listitem [ref=e88]:
+            - button "Page 8062" [ref=e89] [cursor=pointer]: "8062"
+          - listitem [ref=e90]:
+            - button "Page 8063" [ref=e91] [cursor=pointer]: "8063"
+          - listitem [ref=e92]:
+            - button "Next page" [ref=e93] [cursor=pointer]:
+              - generic [ref=e94]: 
+      - complementary [ref=e95]:
+        - generic [ref=e96]:
+          - heading "Popular Tags" [level=6] [ref=e97]
+          - generic [ref=e98]:
+            - button "реклама" [ref=e99] [cursor=pointer]
+            - button "autus" [ref=e100] [cursor=pointer]
+            - button "iste" [ref=e101] [cursor=pointer]
+            - button "tripudio" [ref=e102] [cursor=pointer]
+            - button "amplus" [ref=e103] [cursor=pointer]
+            - button "inflammatio" [ref=e104] [cursor=pointer]
+            - button "ver" [ref=e105] [cursor=pointer]
+            - button "umbra" [ref=e106] [cursor=pointer]
+            - button "apto" [ref=e107] [cursor=pointer]
+            - button "bestia" [ref=e108] [cursor=pointer]
+            - button "placeat" [ref=e109] [cursor=pointer]
+            - button "vinitor" [ref=e110] [cursor=pointer]
+            - button "asporto" [ref=e111] [cursor=pointer]
+            - button "aestivus" [ref=e112] [cursor=pointer]
+            - button "armarium" [ref=e113] [cursor=pointer]
+            - button "adfectus" [ref=e114] [cursor=pointer]
+            - button "conduco" [ref=e115] [cursor=pointer]
+            - button "acsi" [ref=e116] [cursor=pointer]
+            - button "timor" [ref=e117] [cursor=pointer]
+            - button "bene" [ref=e118] [cursor=pointer]
+            - button "sortitus" [ref=e119] [cursor=pointer]
+            - button "sumo" [ref=e120] [cursor=pointer]
+            - button "ustilo" [ref=e121] [cursor=pointer]
+            - button "sperno" [ref=e122] [cursor=pointer]
+            - button "trepide" [ref=e123] [cursor=pointer]
+            - button "perferendis" [ref=e124] [cursor=pointer]
+            - button "clamo" [ref=e125] [cursor=pointer]
+            - button "videlicet" [ref=e126] [cursor=pointer]
+            - button "cognatus" [ref=e127] [cursor=pointer]
+            - button "vulgus" [ref=e128] [cursor=pointer]
+            - button "voluptate" [ref=e129] [cursor=pointer]
+            - button "consuasor" [ref=e130] [cursor=pointer]
+            - button "denego" [ref=e131] [cursor=pointer]
+            - button "conscendo" [ref=e132] [cursor=pointer]
+            - button "tergum" [ref=e133] [cursor=pointer]
+            - button "volutabrum" [ref=e134] [cursor=pointer]
+            - button "verto" [ref=e135] [cursor=pointer]
+            - button "cras" [ref=e136] [cursor=pointer]
+            - button "capto" [ref=e137] [cursor=pointer]
+            - button "peccatus" [ref=e138] [cursor=pointer]
+            - button "subito" [ref=e139] [cursor=pointer]
+            - button "confido" [ref=e140] [cursor=pointer]
+            - button "subnecto" [ref=e141] [cursor=pointer]
+            - button "creber" [ref=e142] [cursor=pointer]
+            - button "abduco" [ref=e143] [cursor=pointer]
+            - button "suggero" [ref=e144] [cursor=pointer]
+            - button "vallum" [ref=e145] [cursor=pointer]
+            - button "terra" [ref=e146] [cursor=pointer]
+            - button "alienus" [ref=e147] [cursor=pointer]
+            - button "vetus" [ref=e148] [cursor=pointer]
+  - contentinfo [ref=e149]:
+    - generic [ref=e150]:
+      - link "conduit" [ref=e151] [cursor=pointer]:
+        - /url: "#/"
+      - generic [ref=e152]:
+        - text: An interactive learning project from
+        - link "Thinkster" [ref=e153] [cursor=pointer]:
+          - /url: https://thinkster.io
+        - text: . Code & design licensed under MIT.
+      - list [ref=e154]:
+        - listitem [ref=e155]:
+          - link " Source code" [ref=e156] [cursor=pointer]:
+            - /url: https://github.com/TonyMckes/conduit-realworld-example-app
+            - generic [ref=e157]: 
+            - text: Source code
+```

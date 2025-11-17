@@ -1,0 +1,137 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - generic:
+        - link "conduit" [ref=e5] [cursor=pointer]:
+          - /url: "#/"
+        - list [ref=e6]:
+          - listitem [ref=e7]:
+            - link " Source code" [ref=e8] [cursor=pointer]:
+              - /url: https://github.com/TonyMckes/conduit-realworld-example-app
+              - generic [ref=e9]: 
+              - text: Source code
+        - list [ref=e10]:
+          - listitem [ref=e11]:
+            - link " Home" [ref=e12] [cursor=pointer]:
+              - /url: "#/"
+              - generic [ref=e13]: 
+              - text: Home
+          - listitem [ref=e14]:
+            - link " Login" [ref=e15] [cursor=pointer]:
+              - /url: "#/login"
+              - generic [ref=e16]: 
+              - text: Login
+          - listitem [ref=e17]:
+            - link "Sign up" [ref=e18] [cursor=pointer]:
+              - /url: "#/register"
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e22]:
+        - heading "conduit" [level=1] [ref=e23]
+        - paragraph [ref=e24]: A place to share your knowledge.
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - list [ref=e29]:
+            - listitem [ref=e30]:
+              - button "Global Feed" [ref=e31]
+          - generic [ref=e32]:
+            - generic [ref=e33]:
+              - link "Patricia Ortiz" [ref=e34] [cursor=pointer]:
+                - /url: "#/profile/Patricia Ortiz"
+                - img "Patricia Ortiz" [ref=e35]
+              - generic [ref=e36]:
+                - link "Patricia Ortiz" [ref=e37] [cursor=pointer]:
+                  - /url: "#/profile/Patricia Ortiz"
+                - generic [ref=e38]: November 16, 2025
+              - button " ( 0 )" [ref=e39] [cursor=pointer]:
+                - generic [ref=e40]: 
+                - generic [ref=e41]: ( 0 )
+            - link "New title Pariatur est tertius sit amitto demum carus. Canto concedo vociferor labore. Read more... suscipit" [ref=e42] [cursor=pointer]:
+              - /url: "#/article/new-title"
+              - heading "New title" [level=1] [ref=e43]
+              - paragraph [ref=e44]: Pariatur est tertius sit amitto demum carus. Canto concedo vociferor labore.
+              - text: Read more...
+              - list [ref=e45]:
+                - listitem [ref=e46]: suscipit
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - link "Mack Ondricka Sr." [ref=e49] [cursor=pointer]:
+                - /url: "#/profile/Mack Ondricka Sr."
+                - img "Mack Ondricka Sr." [ref=e50]
+              - generic [ref=e51]:
+                - link "Mack Ondricka Sr." [ref=e52] [cursor=pointer]:
+                  - /url: "#/profile/Mack Ondricka Sr."
+                - generic [ref=e53]: November 16, 2025
+              - button " ( 0 )" [ref=e54] [cursor=pointer]:
+                - generic [ref=e55]: 
+                - generic [ref=e56]: ( 0 )
+            - link "auxilium coaegresco quod Est thalassinus dolore amplexus cuppedia tamisium tempus centum. Alo cultellus timidus thalassinus pectus. Read more... confero" [ref=e57] [cursor=pointer]:
+              - /url: "#/article/auxilium-coaegresco-quod"
+              - heading "auxilium coaegresco quod" [level=1] [ref=e58]
+              - paragraph [ref=e59]: Est thalassinus dolore amplexus cuppedia tamisium tempus centum. Alo cultellus timidus thalassinus pectus.
+              - text: Read more...
+              - list [ref=e60]:
+                - listitem [ref=e61]: confero
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - link "Anthony Weimann I" [ref=e64] [cursor=pointer]:
+                - /url: "#/profile/Anthony Weimann I"
+                - img "Anthony Weimann I" [ref=e65]
+              - generic [ref=e66]:
+                - link "Anthony Weimann I" [ref=e67] [cursor=pointer]:
+                  - /url: "#/profile/Anthony Weimann I"
+                - generic [ref=e68]: November 16, 2025
+              - button " ( 0 )" [ref=e69] [cursor=pointer]:
+                - generic [ref=e70]: 
+                - generic [ref=e71]: ( 0 )
+            - link "dolorem temptatio cunctatio Adinventitias deludo cui qui adnuo curiositas credo varius tabula in. Vita demulceo amplitudo denique sulum. Read more... aetas" [ref=e72] [cursor=pointer]:
+              - /url: "#/article/dolorem-temptatio-cunctatio"
+              - heading "dolorem temptatio cunctatio" [level=1] [ref=e73]
+              - paragraph [ref=e74]: Adinventitias deludo cui qui adnuo curiositas credo varius tabula in. Vita demulceo amplitudo denique sulum.
+              - text: Read more...
+              - list [ref=e75]:
+                - listitem [ref=e76]: aetas
+          - navigation "Pagination" [ref=e77]:
+            - listitem [ref=e78]:
+              - button "Previous page" [disabled]:
+                - generic: 
+            - listitem [ref=e79]:
+              - button "Page 1 is your current page" [ref=e80]: "1"
+            - listitem [ref=e81]:
+              - button "Page 2" [ref=e82] [cursor=pointer]: "2"
+            - listitem [ref=e83]:
+              - button "Page 3" [ref=e84] [cursor=pointer]: "3"
+            - listitem [ref=e85]:
+              - button "..." [ref=e86] [cursor=pointer]
+            - listitem [ref=e87]:
+              - button "Page 8044" [ref=e88] [cursor=pointer]: "8044"
+            - listitem [ref=e89]:
+              - button "Page 8045" [ref=e90] [cursor=pointer]: "8045"
+            - listitem [ref=e91]:
+              - button "Page 8046" [ref=e92] [cursor=pointer]: "8046"
+            - listitem [ref=e93]:
+              - button "Next page" [ref=e94] [cursor=pointer]:
+                - generic [ref=e95]: 
+        - complementary [ref=e96]:
+          - generic [ref=e97]:
+            - heading "Popular Tags" [level=6] [ref=e98]
+            - paragraph [ref=e100]: Loading tags...
+  - contentinfo [ref=e101]:
+    - generic [ref=e102]:
+      - link "conduit" [ref=e103] [cursor=pointer]:
+        - /url: "#/"
+      - generic [ref=e104]:
+        - text: An interactive learning project from
+        - link "Thinkster" [ref=e105] [cursor=pointer]:
+          - /url: https://thinkster.io
+        - text: . Code & design licensed under MIT.
+      - list [ref=e106]:
+        - listitem [ref=e107]:
+          - link " Source code" [ref=e108] [cursor=pointer]:
+            - /url: https://github.com/TonyMckes/conduit-realworld-example-app
+            - generic [ref=e109]: 
+            - text: Source code
+```

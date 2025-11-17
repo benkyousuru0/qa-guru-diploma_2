@@ -1,0 +1,58 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - generic:
+        - link "conduit" [ref=e5] [cursor=pointer]:
+          - /url: "#/"
+        - list [ref=e6]:
+          - listitem [ref=e7]:
+            - link " Source code" [ref=e8] [cursor=pointer]:
+              - /url: https://github.com/TonyMckes/conduit-realworld-example-app
+              - generic [ref=e9]: 
+              - text: Source code
+        - list [ref=e10]:
+          - listitem [ref=e11]:
+            - link " Home" [ref=e12] [cursor=pointer]:
+              - /url: "#/"
+              - generic [ref=e13]: 
+              - text: Home
+          - listitem [ref=e14]:
+            - link " New Article" [ref=e15] [cursor=pointer]:
+              - /url: "#/editor"
+              - generic [ref=e16]: 
+              - text: New Article
+          - listitem [ref=e17]:
+            - generic [ref=e18] [cursor=pointer]:
+              - img "awdawd" [ref=e19]
+              - text: awdawd
+            - text:   
+  - main [ref=e20]:
+    - group [ref=e26]:
+      - group [ref=e27]:
+        - textbox "Article Title" [active] [ref=e28]: Astrum aestas cotidie anser.
+      - group [ref=e29]:
+        - textbox "What's this article about?" [ref=e30]: Tristis abbas adfero aliqua antiquus.
+      - group [ref=e31]:
+        - textbox "Write your article (in markdown)" [ref=e32]: Canto numquam alii crur torqueo solio. Curatio ante amicitia tui aduro. Autem venia caelum tremo bene aetas timidus. Deputo utrimque tenus voluntarius. Vel catena quas trucido verumtamen sopor. Cibo vergo admoneo possimus adeptio ante maiores. Ut doloribus ultra villa statim speculum eveniet explicabo tabgo audentia. Antiquus claudeo desipio corporis. Deinde brevis aveho conor utpote timor textus spiculum.
+      - group [ref=e33]:
+        - textbox "Enter tags" [ref=e34]: Convoco.
+      - button "Update Article" [ref=e35] [cursor=pointer]
+  - contentinfo [ref=e36]:
+    - generic [ref=e37]:
+      - link "conduit" [ref=e38] [cursor=pointer]:
+        - /url: "#/"
+      - generic [ref=e39]:
+        - text: An interactive learning project from
+        - link "Thinkster" [ref=e40] [cursor=pointer]:
+          - /url: https://thinkster.io
+        - text: . Code & design licensed under MIT.
+      - list [ref=e41]:
+        - listitem [ref=e42]:
+          - link " Source code" [ref=e43] [cursor=pointer]:
+            - /url: https://github.com/TonyMckes/conduit-realworld-example-app
+            - generic [ref=e44]: 
+            - text: Source code
+```

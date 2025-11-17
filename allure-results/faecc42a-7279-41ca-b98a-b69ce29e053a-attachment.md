@@ -1,0 +1,193 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - generic:
+        - link "conduit" [ref=e5] [cursor=pointer]:
+          - /url: "#/"
+        - list [ref=e6]:
+          - listitem [ref=e7]:
+            - link " Source code" [ref=e8] [cursor=pointer]:
+              - /url: https://github.com/TonyMckes/conduit-realworld-example-app
+              - generic [ref=e9]: 
+              - text: Source code
+        - list [ref=e10]:
+          - listitem [ref=e11]:
+            - link " Home" [ref=e12] [cursor=pointer]:
+              - /url: "#/"
+              - generic [ref=e13]: 
+              - text: Home
+          - listitem [ref=e14]:
+            - link " Login" [ref=e15] [cursor=pointer]:
+              - /url: "#/login"
+              - generic [ref=e16]: 
+              - text: Login
+          - listitem [ref=e17]:
+            - link "Sign up" [ref=e18] [cursor=pointer]:
+              - /url: "#/register"
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e22]:
+        - heading "conduit" [level=1] [ref=e23]
+        - paragraph [ref=e24]: A place to share your knowledge.
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - list [ref=e29]:
+            - listitem [ref=e30]:
+              - button "Global Feed" [ref=e31]
+          - generic [ref=e32]:
+            - generic [ref=e33]:
+              - link "awdawd" [ref=e34] [cursor=pointer]:
+                - /url: "#/profile/awdawd"
+                - img "awdawd" [ref=e35]
+              - generic [ref=e36]:
+                - link "awdawd" [ref=e37] [cursor=pointer]:
+                  - /url: "#/profile/awdawd"
+                - generic [ref=e38]: November 17, 2025
+              - button " ( 0 )" [ref=e39] [cursor=pointer]:
+                - generic [ref=e40]: 
+                - generic [ref=e41]: ( 0 )
+            - link "Temptatio barba bene. Basium sequi vix volaticus cicuta. Read more... arx. Expedita terminatio" [ref=e42] [cursor=pointer]:
+              - /url: "#/article/temptatio-barba-bene-"
+              - heading "Temptatio barba bene." [level=1] [ref=e43]
+              - paragraph [ref=e44]: Basium sequi vix volaticus cicuta.
+              - text: Read more...
+              - list [ref=e45]:
+                - listitem [ref=e46]: arx.
+                - listitem [ref=e47]: Expedita
+                - listitem [ref=e48]: terminatio
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - link "awdawd" [ref=e51] [cursor=pointer]:
+                - /url: "#/profile/awdawd"
+                - img "awdawd" [ref=e52]
+              - generic [ref=e53]:
+                - link "awdawd" [ref=e54] [cursor=pointer]:
+                  - /url: "#/profile/awdawd"
+                - generic [ref=e55]: November 17, 2025
+              - button " ( 0 )" [ref=e56] [cursor=pointer]:
+                - generic [ref=e57]: 
+                - generic [ref=e58]: ( 0 )
+            - link "Comis depereo vilis. Tergo cur cupiditas cui adamo. Read more... abutor Tamdiu villa." [ref=e59] [cursor=pointer]:
+              - /url: "#/article/comis-depereo-vilis-"
+              - heading "Comis depereo vilis." [level=1] [ref=e60]
+              - paragraph [ref=e61]: Tergo cur cupiditas cui adamo.
+              - text: Read more...
+              - list [ref=e62]:
+                - listitem [ref=e63]: abutor
+                - listitem [ref=e64]: Tamdiu
+                - listitem [ref=e65]: villa.
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - link "awdawd" [ref=e68] [cursor=pointer]:
+                - /url: "#/profile/awdawd"
+                - img "awdawd" [ref=e69]
+              - generic [ref=e70]:
+                - link "awdawd" [ref=e71] [cursor=pointer]:
+                  - /url: "#/profile/awdawd"
+                - generic [ref=e72]: November 17, 2025
+              - button " ( 0 )" [ref=e73] [cursor=pointer]:
+                - generic [ref=e74]: 
+                - generic [ref=e75]: ( 0 )
+            - link "Advenio caelum claustrum auctus. Deprimo ulciscor ambitus eligendi pecco vox. Read more... adeptio Cinis thesaurus." [ref=e76] [cursor=pointer]:
+              - /url: "#/article/advenio-caelum-claustrum-auctus-"
+              - heading "Advenio caelum claustrum auctus." [level=1] [ref=e77]
+              - paragraph [ref=e78]: Deprimo ulciscor ambitus eligendi pecco vox.
+              - text: Read more...
+              - list [ref=e79]:
+                - listitem [ref=e80]: adeptio
+                - listitem [ref=e81]: Cinis
+                - listitem [ref=e82]: thesaurus.
+          - navigation "Pagination" [ref=e83]:
+            - listitem [ref=e84]:
+              - button "Previous page" [disabled]:
+                - generic: 
+            - listitem [ref=e85]:
+              - button "Page 1 is your current page" [ref=e86]: "1"
+            - listitem [ref=e87]:
+              - button "Page 2" [ref=e88] [cursor=pointer]: "2"
+            - listitem [ref=e89]:
+              - button "Page 3" [ref=e90] [cursor=pointer]: "3"
+            - listitem [ref=e91]:
+              - button "..." [ref=e92] [cursor=pointer]
+            - listitem [ref=e93]:
+              - button "Page 8112" [ref=e94] [cursor=pointer]: "8112"
+            - listitem [ref=e95]:
+              - button "Page 8113" [ref=e96] [cursor=pointer]: "8113"
+            - listitem [ref=e97]:
+              - button "Page 8114" [ref=e98] [cursor=pointer]: "8114"
+            - listitem [ref=e99]:
+              - button "Next page" [ref=e100] [cursor=pointer]:
+                - generic [ref=e101]: 
+        - complementary [ref=e102]:
+          - generic [ref=e103]:
+            - heading "Popular Tags" [level=6] [ref=e104]
+            - generic [ref=e105]:
+              - button "реклама" [ref=e106] [cursor=pointer]
+              - button "autus" [ref=e107] [cursor=pointer]
+              - button "iste" [ref=e108] [cursor=pointer]
+              - button "tripudio" [ref=e109] [cursor=pointer]
+              - button "amplus" [ref=e110] [cursor=pointer]
+              - button "inflammatio" [ref=e111] [cursor=pointer]
+              - button "ver" [ref=e112] [cursor=pointer]
+              - button "umbra" [ref=e113] [cursor=pointer]
+              - button "apto" [ref=e114] [cursor=pointer]
+              - button "bestia" [ref=e115] [cursor=pointer]
+              - button "placeat" [ref=e116] [cursor=pointer]
+              - button "vinitor" [ref=e117] [cursor=pointer]
+              - button "asporto" [ref=e118] [cursor=pointer]
+              - button "aestivus" [ref=e119] [cursor=pointer]
+              - button "armarium" [ref=e120] [cursor=pointer]
+              - button "adfectus" [ref=e121] [cursor=pointer]
+              - button "conduco" [ref=e122] [cursor=pointer]
+              - button "acsi" [ref=e123] [cursor=pointer]
+              - button "timor" [ref=e124] [cursor=pointer]
+              - button "bene" [ref=e125] [cursor=pointer]
+              - button "sortitus" [ref=e126] [cursor=pointer]
+              - button "sumo" [ref=e127] [cursor=pointer]
+              - button "ustilo" [ref=e128] [cursor=pointer]
+              - button "sperno" [ref=e129] [cursor=pointer]
+              - button "trepide" [ref=e130] [cursor=pointer]
+              - button "perferendis" [ref=e131] [cursor=pointer]
+              - button "clamo" [ref=e132] [cursor=pointer]
+              - button "videlicet" [ref=e133] [cursor=pointer]
+              - button "cognatus" [ref=e134] [cursor=pointer]
+              - button "vulgus" [ref=e135] [cursor=pointer]
+              - button "voluptate" [ref=e136] [cursor=pointer]
+              - button "consuasor" [ref=e137] [cursor=pointer]
+              - button "denego" [ref=e138] [cursor=pointer]
+              - button "conscendo" [ref=e139] [cursor=pointer]
+              - button "tergum" [ref=e140] [cursor=pointer]
+              - button "volutabrum" [ref=e141] [cursor=pointer]
+              - button "verto" [ref=e142] [cursor=pointer]
+              - button "cras" [ref=e143] [cursor=pointer]
+              - button "capto" [ref=e144] [cursor=pointer]
+              - button "peccatus" [ref=e145] [cursor=pointer]
+              - button "subito" [ref=e146] [cursor=pointer]
+              - button "confido" [ref=e147] [cursor=pointer]
+              - button "subnecto" [ref=e148] [cursor=pointer]
+              - button "creber" [ref=e149] [cursor=pointer]
+              - button "abduco" [ref=e150] [cursor=pointer]
+              - button "suggero" [ref=e151] [cursor=pointer]
+              - button "vallum" [ref=e152] [cursor=pointer]
+              - button "terra" [ref=e153] [cursor=pointer]
+              - button "alienus" [ref=e154] [cursor=pointer]
+              - button "vetus" [ref=e155] [cursor=pointer]
+  - contentinfo [ref=e156]:
+    - generic [ref=e157]:
+      - link "conduit" [ref=e158] [cursor=pointer]:
+        - /url: "#/"
+      - generic [ref=e159]:
+        - text: An interactive learning project from
+        - link "Thinkster" [ref=e160] [cursor=pointer]:
+          - /url: https://thinkster.io
+        - text: . Code & design licensed under MIT.
+      - list [ref=e161]:
+        - listitem [ref=e162]:
+          - link " Source code" [ref=e163] [cursor=pointer]:
+            - /url: https://github.com/TonyMckes/conduit-realworld-example-app
+            - generic [ref=e164]: 
+            - text: Source code
+```
