@@ -37,7 +37,7 @@
 
 ## 🔗 TestOps
 
-[👉 Перейти в Allure TestOps](https://allure.autotests.cloud/launch/49655)
+[👉 Перейти в Allure TestOps](https://allure.autotests.cloud/launch/49655/tree?treeId=0)
 
 ![TestOps Dashboard](images_report/testops-dashboard.png)
 
