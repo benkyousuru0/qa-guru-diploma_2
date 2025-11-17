@@ -1,0 +1,126 @@
+name: Playwright CI/CD
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  tests:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔎 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js & Cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      - name: 🌐 Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: ▶️ Execute tests
+        run: npm t
+
+      - name: 📁 Upload artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: allure-results
+          retention-days: 20
+
+            - name: 🗃️ Fetch previous history
+        uses: actions/checkout@v4
+        if: always()
+        with:
+          ref: gh-pages
+          path: ./history
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: allure-results
+          allure_history: ./history
+          allure_report: ./report
+          keep_reports: 20
+
+      - name: 🌐 Deploy Allure Report
+        uses: peaceiris/actions-gh-pages@v4
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./history
+
+
+      - name: 📦 Setup allurectl
+        if: always()
+        run: |
+          # Кэшируем allurectl
+          if [ ! -f "/usr/local/bin/allurectl" ]; then
+            echo "Installing allurectl..."
+            curl -o allurectl -L "https://github.com/allure-framework/allurectl/releases/latest/download/allurectl_linux_amd64"
+            chmod +x allurectl
+            sudo mv allurectl /usr/local/bin/
+          fi
+
+      - name: ☁️ Upload to Allure TestOps
+        if: always()
+        run: |
+          allurectl upload allure-results \
+            --endpoint https://allure.autotests.cloud \
+            --project-id 5000 \
+            --token ${{ secrets.ALLURE_TOKEN }} \
+            --launch-name "CI Run #${{ github.run_number }}"
+
+      - name: 📋 Parse test summary
+        id: parse_summary
+        if: always()
+        run: |
+          file="allure-report/widgets/summary.json"
+          if [ -f "$file" ]; then
+            echo "PASSED=$(jq -r '.statistic.passed' $file)" >> $GITHUB_ENV
+            echo "FAILED=$(jq -r '.statistic.failed' $file)" >> $GITHUB_ENV
+            echo "SKIPPED=$(jq -r '.statistic.skipped' $file)" >> $GITHUB_ENV
+            echo "TOTAL=$(jq -r '.statistic.total' $file)" >> $GITHUB_ENV
+          fi
+
+      - name: 📢 Notify in Telegram
+        if: always()
+        run: |
+          status=${{ job.status }}
+          if [ "$status" = "success" ]; then
+            emoji="✅"
+            text="Тесты пройдены"
+          else
+            emoji="❌"
+            text="Тесты упали"
+          fi
+
+          msg="$emoji *$text* $emoji%0A"
+          msg+="%0A📊 *Результаты*:%0A"
+
+          msg+="📋 Всего: *$TOTAL*%0A"
+          msg+="✅ Пройдено: *$PASSED*%0A"
+          msg+="❌ Упали: *$FAILED*%0A"
+          msg+="⏭️ Пропущено: *$SKIPPED*%0A"
+          msg+="%0A━━━━━━━━━━━━━━━━━%0A"
+          msg+="🔗 [Отчёт Allure]()%0A"
+          msg+="🧪 [TestOps](https://allure.autotests.cloud/project/5000)%0A"
+          msg+="📦 [Артефакты]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)%0A"
+          msg+="%0A🏷️ *Запуск #${{ github.run_number }}*"
+
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d parse_mode=Markdown \
+            -d text="$msg"
