@@ -16,6 +16,14 @@ export const test = base.extend({
     await use(app);
   },
 
+  validCredentials: async ({}, use) => {
+    await use({
+      email: process.env.LOGIN_EMAIL,
+      password: process.env.LOGIN_PASSWORD,
+      name: process.env.LOGIN_NAME
+    });
+  },
+
   articleData: async ({}, use) => {
     const article = new ArticleBuilder()
       .addTitle(faker.lorem.sentence(3))

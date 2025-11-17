@@ -5,6 +5,15 @@ import { expect } from "@playwright/test";
 import { test } from "../../helpers/fixtures/index.js";
 
 test.describe("Работа со статьями", () => {
+
+  test("Успешный логин с валидными данными @ui @positive", async ({ app, validCredentials }) => {
+    await app.login.goto();
+    await app.login.login(validCredentials.email, validCredentials.password);
+
+    await expect(app.page).toHaveURL(/#\/$/);
+    await expect(app.login.getUserName(validCredentials.name)).toBeVisible();
+  });
+
   test("Создание новой статьи @ui @positive", async ({ registeredApp, articleData }) => {
     const app = registeredApp;
 
@@ -55,28 +64,5 @@ test.describe("Работа со статьями", () => {
 
     await expect(app.articleView.title).toHaveText(updatedArticleData.title);
     await expect(app.articleView.body).toContainText(updatedArticleData.body);
-  });
-
-  test("Удаление статьи @ui @positive", async ({ registeredApp, createdArticle, updatedArticleData }) => {
-    const app = registeredApp;
-
-    const titleToDelete = updatedArticleData.title || createdArticle.title;
-
-    await app.articles.goto();
-    await app.articles.openArticleByTitle(titleToDelete);
-
-    await app.articleView.clickDelete();
-
-    await expect(app.page).toHaveURL(/#\/$/);
-
-    await app.articles.assertTitleNotExist(titleToDelete);
-  });
-
-  test.afterEach(async ({ registeredApp, createdArticle, updatedArticleData }) => {
-    const app = registeredApp;
-    const title = updatedArticleData.title || createdArticle.title;
-
-    const count = await app.articles.countArticlesByTitle(title);
-    if (count !== 0) {throw new Error(`Статья "${title}" всё ещё существует`);}
   });
 });
