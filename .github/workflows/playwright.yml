@@ -60,7 +60,7 @@ jobs:
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./history
+          publish_dir: ./report
 
       - name: 📦 Setup allurectl
         if: always()

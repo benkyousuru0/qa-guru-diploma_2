@@ -5,7 +5,6 @@ import { expect } from "@playwright/test";
 import { test } from "../../helpers/fixtures/index.js";
 
 test.describe("Работа со статьями", () => {
-
   test("Создание новой статьи @ui @positive", async ({ registeredApp, articleData }) => {
     const app = registeredApp;
 
