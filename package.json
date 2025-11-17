@@ -2,6 +2,7 @@
   "name": "qa-guru-diploma_2",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "npx playwright test",
     "t:api": "playwright test --grep @api",
