@@ -1,0 +1,57 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - generic:
+        - link "conduit" [ref=e5] [cursor=pointer]:
+          - /url: "#/"
+        - list [ref=e6]:
+          - listitem [ref=e7]:
+            - link " Source code" [ref=e8] [cursor=pointer]:
+              - /url: https://github.com/TonyMckes/conduit-realworld-example-app
+              - generic [ref=e9]: 
+              - text: Source code
+        - list [ref=e10]:
+          - listitem [ref=e11]:
+            - link " Home" [ref=e12] [cursor=pointer]:
+              - /url: "#/"
+              - generic [ref=e13]: 
+              - text: Home
+          - listitem [ref=e14]:
+            - link " Login" [ref=e15] [cursor=pointer]:
+              - /url: "#/login"
+              - generic [ref=e16]: 
+              - text: Login
+          - listitem [ref=e17]:
+            - link "Sign up" [ref=e18] [cursor=pointer]:
+              - /url: "#/register"
+  - main [ref=e19]:
+    - generic [ref=e23]:
+      - heading "Sign in" [level=1] [ref=e24]
+      - paragraph [ref=e25]:
+        - link "Need an account?" [ref=e26] [cursor=pointer]:
+          - /url: "#/register"
+      - generic [ref=e27]:
+        - group [ref=e28]:
+          - textbox "Email" [active] [ref=e29]
+        - group [ref=e30]:
+          - textbox "Password" [ref=e31]
+        - button "Login" [ref=e32] [cursor=pointer]
+  - contentinfo [ref=e33]:
+    - generic [ref=e34]:
+      - link "conduit" [ref=e35] [cursor=pointer]:
+        - /url: "#/"
+      - generic [ref=e36]:
+        - text: An interactive learning project from
+        - link "Thinkster" [ref=e37] [cursor=pointer]:
+          - /url: https://thinkster.io
+        - text: . Code & design licensed under MIT.
+      - list [ref=e38]:
+        - listitem [ref=e39]:
+          - link " Source code" [ref=e40] [cursor=pointer]:
+            - /url: https://github.com/TonyMckes/conduit-realworld-example-app
+            - generic [ref=e41]: 
+            - text: Source code
+```
