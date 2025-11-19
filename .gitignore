@@ -25,4 +25,4 @@ Thumbs.db
 .vscode/
 .idea/
 .env*
-./setting.json
+setting.json
