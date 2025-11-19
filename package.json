@@ -8,7 +8,7 @@
     "t:api": "playwright test --grep @api",
     "t:ui": "playwright test --grep @ui",
     "t:positive": "playwright test --grep @positive",
-    "t:negative": "playwrignpht test --grep @negative",
+    "t:negative": "playwright test --grep @negative",
     "t:get": "playwright test --grep @get",
     "t:post": "playwright test --grep @post",
     "t:delete": "playwright test --grep @delete",

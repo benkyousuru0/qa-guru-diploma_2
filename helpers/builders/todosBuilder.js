@@ -10,8 +10,6 @@ const todosBuilder = {
     doneStatus: faker.datatype.boolean(),
     ...overrides,
   }),
-  getTodos: (params = {}) => apiClient.get("/todos", { params }),
-  getTodoById: (id) => apiClient.get(`/todos/${id}`), 
   generateRandomUuid: () => faker.string.uuid(),
   generateRandomNumberId: () => faker.number.int({ min: 1000, max: 9999 }),
   generateLongString: (min) => {

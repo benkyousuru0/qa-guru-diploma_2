@@ -2,9 +2,9 @@
 node_modules/
 
 # Env files
-# .env
-# .env.local
-# .env.*.local
+.env
+.env.local
+.env.*.local
 
 # Playwright test reports
 allure-results/
@@ -24,3 +24,5 @@ Thumbs.db
 # Optional: Editor files
 .vscode/
 .idea/
+.env*
+./setting.json

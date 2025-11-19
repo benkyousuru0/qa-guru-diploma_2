@@ -11,6 +11,10 @@ jobs:
   tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      LOGIN_EMAIL: ${{ secrets.LOGIN_EMAIL }}
+      LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
+      LOGIN_NAME: ${{ secrets.LOGIN_NAME }}
     steps:
       - name: 🔎 Checkout code
         uses: actions/checkout@v4
