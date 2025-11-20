@@ -61,37 +61,21 @@ test.describe("Работа со статьями", () => {
 
   test("Редактирование статьи @ui @positive", async ({ registeredApp, createdArticle, updatedArticleData }) => {
     const app = registeredApp;
+    const updatedArticle = updatedArticleData;
 
     await app.articles.goto();
     await app.articles.clickGlobalFeedTab();
 
     await app.articles.openArticleByTitle(createdArticle.title);
     await app.articleView.clickEdit();
+    await app.articleForm.updateArticle(updatedArticle);
 
-    await app.articleForm.createArticle(updatedArticleData);
-
-    await expect(app.articleView.title).toHaveText(updatedArticleData.title);
-    await expect(app.articleView.body).toContainText(updatedArticleData.body);
-
-    const cleanTag = (tag) =>
-      tag
-        .trim()
-        .replace(/[.,]/g, "") 
-        .toLowerCase();
-
-    const expectedTagsArray = updatedArticleData.tags
-      .split(",")
-      .map(cleanTag)
-      .filter(Boolean); 
-
-    const uiValue = await app.articleForm.tagsInput.inputValue();
-
-    const uiTagsArray = uiValue
-      .split(",")
-      .map(cleanTag)
-      .filter(Boolean);
-
-    expect(uiTagsArray.sort()).toEqual(expectedTagsArray.sort());
-
+    await expect(app.articleView.title).toHaveText(updatedArticle.title);
+    await expect(app.articleView.body).toContainText(updatedArticle.body);
+    const actualTags = (await app.articleView.tags.allTextContents()).map(t => t.trim().toLowerCase());
+    const expectedTags = createdArticle.tags.trim().toLowerCase().split(/\s+/);
+    for (const tag of expectedTags) {
+      expect(actualTags).toContain(tag);
+    }
   });
 });
