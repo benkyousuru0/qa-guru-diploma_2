@@ -73,16 +73,25 @@ test.describe("Работа со статьями", () => {
     await expect(app.articleView.title).toHaveText(updatedArticleData.title);
     await expect(app.articleView.body).toContainText(updatedArticleData.body);
 
-    const cleanTag = tag => tag.trim().replace(/[.,]/g, "").toLowerCase();
+    const cleanTag = (tag) =>
+      tag
+        .trim()
+        .replace(/[.,]/g, "") // Удаляем все точки/запятые
+        .toLowerCase();
 
-    const rawTagsString = updatedArticleData.tags; 
-    const expectedTagsArray = rawTagsString.split(",").map(cleanTag);
+    const expectedTagsArray = updatedArticleData.tags
+      .split(",")
+      .map(cleanTag)
+      .filter(Boolean); // убираем пустые
 
-    const uiTagTexts = await app.articleView.tags.allTextContents();
-    const normalizedUiTags = uiTagTexts.map(cleanTag);
+    const uiValue = await app.articleView.tagsInput.inputValue();
 
-    expectedTagsArray.forEach(tag => {
-      expect(normalizedUiTags).toContain(tag);
-    });
+    const uiTagsArray = uiValue
+      .split(",")
+      .map(cleanTag)
+      .filter(Boolean);
+
+    expect(uiTagsArray.sort()).toEqual(expectedTagsArray.sort());
+
   });
 });
