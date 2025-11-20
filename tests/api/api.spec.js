@@ -45,11 +45,23 @@ test.describe("Challenger API", () => {
   });
 
   test("05. GET /todos/{id} (200) @api @positive", async () => {
-    const response = await api.todos.getTodoById(todosBuilder.existentId);
-    const todo = response.data.todos[0];
-    expect(response.status).toBe(200);
+    const newTodoData = todosBuilder.createRandomTodo();
+    const createResponse = await api.todos.createTodo(newTodoData);
+
+    expect(createResponse.status).toBe(201);
+
+    const createdTodo = createResponse.data;
+    expect(createdTodo).toBeDefined();
+    expect(createdTodo).toHaveProperty("id");
+    expect(createdTodo.title).toBe(newTodoData.title);
+
+    const getResponse = await api.todos.getTodoById(createdTodo.id);
+    expect(getResponse.status).toBe(200);
+
+    const todo = getResponse.data.todos ? getResponse.data.todos[0] : getResponse.data;
+    expect(todo).toBeDefined();
     expect(todo).toHaveProperty("id");
-    expect(todo.id).toBe(2);
+    expect(todo.id).toBe(createdTodo.id);
     expect(todo).toHaveProperty("title");
     expect(todo).toHaveProperty("doneStatus");
     expect(todo).toHaveProperty("description");
@@ -66,18 +78,23 @@ test.describe("Challenger API", () => {
     const todoData = todosBuilder.createRandomTodo({ doneStatus: true });
     const createResp = await api.todos.createTodo(todoData);
     expect(createResp.status).toBe(201);
-    expect(createResp.data.doneStatus).toBe(true);
 
-    const taskID = createResp.data.id;
-    const filterParams = todosBuilder.createFilterDone();
+    const createdTodo = createResp.data;
+    expect(createdTodo.doneStatus).toBe(true);
+
+    const filterParams = todosBuilder.createFilterDone(); 
     const listResp = await api.todos.getTodos({ params: filterParams });
     expect(listResp.status).toBe(200);
 
     const todos = listResp.data.todos;
     expect(todos.length).toBeGreaterThan(0);
 
-    let isTaskInList = todos.some(todo => todo.id === taskID && 
-        (todo.doneStatus === true || todo.doneStatus === "true"));
-    expect(isTaskInList).toBe(true);
+    const foundTodo = todos.find(todo => todo.id === createdTodo.id);
+    expect(foundTodo).toBeDefined();
+
+    expect(foundTodo.title).toBe(createdTodo.title);
+    expect(foundTodo.description).toBe(createdTodo.description);
+    expect(String(foundTodo.doneStatus)).toBe(String(createdTodo.doneStatus));
   });
+
 });

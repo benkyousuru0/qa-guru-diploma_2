@@ -27,9 +27,7 @@ const todosBuilder = {
     description: faker.lorem.sentences(2)
   }),
   "defaultDoneStatus": false,
-  "defaultDescription": "",
-  "existentId": 2,
-
+  "defaultDescription": ""
 };
 
 export default todosBuilder;

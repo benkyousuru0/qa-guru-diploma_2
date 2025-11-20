@@ -20,8 +20,16 @@ test.describe("Работа со статьями", () => {
     await app.articles.goto();
     await app.articles.clickCreateArticle();
     await app.articleForm.createArticle(articleData);
+
     await expect(app.articleView.title).toHaveText(articleData.title);
     await expect(app.articleView.body).toContainText(articleData.body);
+    const tagTexts = await app.articleView.tags.allTextContents(); 
+    const uiTagsArray = tagTexts.map(t => t.trim()).sort();
+
+    const dataTagsArray = articleData.tags.split(" ").map(t => t.trim()).sort();
+
+    expect(uiTagsArray).toEqual(dataTagsArray);
+
   });
 
   test("Проверка появления статьи в списке и просмотр @ui @positive", async ({ registeredApp, createdArticle }) => {
@@ -64,5 +72,17 @@ test.describe("Работа со статьями", () => {
 
     await expect(app.articleView.title).toHaveText(updatedArticleData.title);
     await expect(app.articleView.body).toContainText(updatedArticleData.body);
+
+    const cleanTag = tag => tag.trim().replace(/[.,]/g, "").toLowerCase();
+
+    const rawTagsString = updatedArticleData.tags; 
+    const expectedTagsArray = rawTagsString.split(",").map(cleanTag);
+
+    const uiTagTexts = await app.articleView.tags.allTextContents();
+    const normalizedUiTags = uiTagTexts.map(cleanTag);
+
+    expectedTagsArray.forEach(tag => {
+      expect(normalizedUiTags).toContain(tag);
+    });
   });
 });

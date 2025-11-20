@@ -3,6 +3,7 @@ export class ArticleViewPage {
     this.page = page;
     this.title = page.locator(".article-page .banner h1");
     this.body = page.locator(".article-content"); 
+    this.tags = page.locator(".tag-list li"); 
     this.deleteButton = page.locator("button:has-text(\"Delete Article\")").first(); 
     this.editButton = page.locator("button:has-text(\"Edit Article\")").first();   
   }

@@ -39,7 +39,7 @@ export const test = base.extend({
       title: faker.lorem.sentence(4),
       about: faker.lorem.sentence(6),
       body: faker.lorem.paragraphs(2),
-      tags: faker.lorem.sentence(2)
+      tags: faker.lorem.words(2)
     };
     await use(updated);
   },
