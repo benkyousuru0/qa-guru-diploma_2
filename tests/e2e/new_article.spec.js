@@ -76,15 +76,15 @@ test.describe("Работа со статьями", () => {
     const cleanTag = (tag) =>
       tag
         .trim()
-        .replace(/[.,]/g, "") // Удаляем все точки/запятые
+        .replace(/[.,]/g, "") 
         .toLowerCase();
 
     const expectedTagsArray = updatedArticleData.tags
       .split(",")
       .map(cleanTag)
-      .filter(Boolean); // убираем пустые
+      .filter(Boolean); 
 
-    const uiValue = await app.articleView.tagsInput.inputValue();
+    const uiValue = await app.articleForm.tagsInput.inputValue();
 
     const uiTagsArray = uiValue
       .split(",")
